@@ -65,11 +65,13 @@ end
   location: "Liverpool",
   date: Date.new(2017, 9, 29),
   time: 18.00,
+  user_id: 1
 }, {
   name: "Royal Rumble",
   location: "London",
   date: Date.new(2017, 7, 10),
   time: 18.00,
+  user_id: 2
 }].each do |race|
   Race.create!(race)
 end
