@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Albums</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Photo</th>
+      <th>Weight</th>
+      <th>Skills</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @drones.each do |drone| %>
+      <tr>
+        <td><%= drone.name %></td>
+        <td><%= image_tag drone.photo, width: 200 %></td>
+        <td><%= drone.weight %></td>
+        <td><%= drone.skills %></td>
+        <td><%= drone.user.name %></td>
+        <td><%= link_to 'Show', drone %></td>
+        <td><%= link_to 'Edit', edit_drone_path(drone) %></td>
+        <td><%= link_to 'Destroy', drone, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Drone', new_drone_path %>

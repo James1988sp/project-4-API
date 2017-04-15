@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @drone.user.name %>
+</p>
+
+<p>
+  <strong>Photo:</strong>
+  <%= image_tag @drone.photo, width: 200 %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @drone.weight %>
+</p>
+
+<p>
+  <strong>Skills:</strong>
+  <%= @drone.skills %>
+</p>
+
+<p>
+  <strong>Speed:</strong>
+  <%= @drone.speed %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @album.user.name %>
+</p>
+
+<p>
+  <strong>Races:</strong>
+  <ul>
+  <% @drone.races.each do |race| %>
+  <li><%= race.name %></li>
+  <% end %>
+  </ul>
+</p>
+
+<%= link_to 'Edit', edit_drone_path(@drone) %> |
+<%= link_to 'Back', drones_path %>
