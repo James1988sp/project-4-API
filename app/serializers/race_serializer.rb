@@ -1,3 +1,6 @@
 class RaceSerializer < ActiveModel::Serializer
-  attributes :id
+  has_many :attendees
+  belongs_to :user
+  has_many :comments
+  attributes :id, :name, :location, :date, :attendee_ids
 end

@@ -1,3 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id
+  has_many :races_created
+  has_many :races_attending
+  attributes :id, :username, :email
 end
