@@ -1,6 +1,6 @@
 class DronesController < ApplicationController
   before_action :set_drone, only: [:show, :update, :destroy]
-
+  skip_before_action :authenticate_user!
   # GET /drones
   def index
     @drones = Drone.all

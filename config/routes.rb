@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   get 'oauth/github'
 
-scope :api do
+  scope :api do
   resources :comments
   resources :races
   resources :drones
-  resources :users
+  resources :users, except: [:create]
   post 'register', to: 'authentications#register'
-    post 'login', to: 'authentications#login'
+  post 'login', to: 'authentications#login'
   end
 end

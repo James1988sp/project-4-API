@@ -1,5 +1,6 @@
 class RacesController < ApplicationController
   before_action :set_race, only: [:show, :update, :destroy]
+  skip_before_action :authenticate_user!
 
   # GET /races
   def index

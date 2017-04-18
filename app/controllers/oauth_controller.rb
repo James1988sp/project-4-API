@@ -17,7 +17,7 @@ class OauthController < ApplicationController
 
     user = User.where("email = email OR github_id = github_id", email: profile["email"], github_id: profile["id"]).first
 
-    user = User.new username: profile["login"], email: profile["email"]  unless user
+    user = User.new name: profile["login"], email: profile["email"]  unless user
 
     user[:github_id] = profile["id"]
 
