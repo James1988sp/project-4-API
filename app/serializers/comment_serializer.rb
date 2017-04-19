@@ -1,5 +1,6 @@
 class CommentSerializer < ActiveModel::Serializer
-  belongs_to :user
-  belongs_to :event
-  attributes :id, :body, :user
+  attributes :id, :body
+  has_one :user
+  has_one :race
+  has_one :drone
 end

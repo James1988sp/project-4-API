@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170418093002) do
+ActiveRecord::Schema.define(version: 20170419134656) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "user_id"
+    t.integer  "race_id"
+    t.integer  "drone_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["drone_id"], name: "index_comments_on_drone_id", using: :btree
+    t.index ["race_id"], name: "index_comments_on_race_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
 
   create_table "drones", force: :cascade do |t|
     t.string   "name"
@@ -24,6 +36,7 @@ ActiveRecord::Schema.define(version: 20170418093002) do
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float    "price"
     t.index ["user_id"], name: "index_drones_on_user_id", using: :btree
   end
 
@@ -59,6 +72,9 @@ ActiveRecord::Schema.define(version: 20170418093002) do
     t.integer  "github_id"
   end
 
+  add_foreign_key "comments", "drones"
+  add_foreign_key "comments", "races"
+  add_foreign_key "comments", "users"
   add_foreign_key "drones", "users"
   add_foreign_key "races", "users"
 end

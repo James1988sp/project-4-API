@@ -47,6 +47,7 @@ end
   weight: 30,
   skills: "Very fast dude",
   speed: 60,
+  price: 200,
   user_id: 1
 }, {
   name: "DJI Phantom 4",
@@ -54,6 +55,7 @@ end
   weight: 44,
   skills: "Super dynamic drone",
   speed: 65,
+  price: 200,
   user_id: 2
 }].each do |drone|
   Drone.create!(drone)

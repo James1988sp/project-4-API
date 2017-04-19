@@ -1,6 +1,5 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :update, :destroy]
-  skip_before_action :authenticate_user!
 
   # GET /comments
   def index
@@ -17,7 +16,6 @@ class CommentsController < ApplicationController
   # POST /comments
   def create
     @comment = Comment.new(comment_params)
-    @comment.user = current_user
 
     if @comment.save
       render json: @comment, status: :created, location: @comment
@@ -28,7 +26,6 @@ class CommentsController < ApplicationController
 
   # PATCH/PUT /comments/1
   def update
-    return render json: { errors: ["Unauthorized"] } if @comment.user != current_user
     if @comment.update(comment_params)
       render json: @comment
     else
@@ -38,7 +35,6 @@ class CommentsController < ApplicationController
 
   # DELETE /comments/1
   def destroy
-    return render json: { errors: ["Unauthorized"] } if @comment.user != current_user
     @comment.destroy
   end
 
@@ -50,6 +46,6 @@ class CommentsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def comment_params
-      params.require(:comment).permit(:body, :user_id, :event_id)
+      params.require(:comment).permit(:body, :user_id, :race_id, :drone_id)
     end
 end

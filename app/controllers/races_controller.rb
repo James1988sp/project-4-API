@@ -17,7 +17,7 @@ class RacesController < ApplicationController
   # POST /races
   def create
     @race = Race.new(race_params)
-    @event.user = current_user
+    @race.user = current_user
 
     if @race.save
       render json: @race, status: :created, location: @race
