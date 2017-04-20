@@ -1,5 +1,5 @@
 class UserSerializer < ActiveModel::Serializer
   has_many :races
-  # has_many :races_attending
+  has_many :drones
   attributes :id, :name, :email
 end

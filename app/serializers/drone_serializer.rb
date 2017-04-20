@@ -1,3 +1,4 @@
 class DroneSerializer < ActiveModel::Serializer
-  attributes :id
+  belongs_to :user
+  attributes :id, :name, :photo, :weight, :skills, :speed, :price
 end
