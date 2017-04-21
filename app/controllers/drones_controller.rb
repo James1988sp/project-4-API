@@ -15,7 +15,7 @@ class DronesController < ApplicationController
 
   # POST /drones
   def create
-    @drone = Drone.new(drone_params)
+    @drone = Drone.new(Uploader.upload(drone_params))
 
     if @drone.save
       render json: @drone, status: :created, location: @drone
@@ -46,6 +46,6 @@ class DronesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def drone_params
-      params.require(:drone).permit(:name, :photo, :weight, :skills, :speed, :user_id, race_ids: [])
+      params.require(:drone).permit(:name, :weight, :skills, :speed, :user_id, :base64, race_ids: [])
     end
 end
