@@ -26,7 +26,7 @@ class DronesController < ApplicationController
 
   # PATCH/PUT /drones/1
   def update
-    if @drone.update(drone_params)
+    if @drone.update(Uploader.upload(drone_params))
       render json: @drone
     else
       render json: @drone.errors, status: :unprocessable_entity

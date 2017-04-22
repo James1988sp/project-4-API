@@ -7,6 +7,7 @@ class Uploader
       return nil
     end
   end
+
   def self.upload(params)
 
     image_data = split_base64(params[:base64])
@@ -27,9 +28,9 @@ class Uploader
       }
 
       uploaded_file = ActionDispatch::Http::UploadedFile.new(img_params)
-      params[:image] = uploaded_file
-      params.delete(:base64)
+      params[:photo] = uploaded_file
     end
+    params.delete(:base64)
     return params
   end
 
